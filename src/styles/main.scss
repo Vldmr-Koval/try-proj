@@ -3,6 +3,8 @@
 @import "mixins.scss";
 @import "contacts.scss";
 
+@import "~bootstrap/scss/bootstrap";
+
 * {
   box-sizing: border-box;
   outline-color: $colorAccent;

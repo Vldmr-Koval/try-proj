@@ -1,7 +1,8 @@
 import {useState} from 'react'
 
 const Form = () =>{
-    let _key = 0;
+    let _key = 0
+    
 
     const handleSubmit= (e) => {
         e.preventDefault();
@@ -9,7 +10,6 @@ const Form = () =>{
         const userMessege = {userName, userEmail, userTitle, userComment}
         window.localStorage.setItem(_key, JSON.stringify(userMessege))
         _key = _key + 1
-
     }
     
 

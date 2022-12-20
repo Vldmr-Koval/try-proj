@@ -10,15 +10,21 @@ const Header = () =>{
           </img>
         </a>
 
-        <div className="section-header_wrap_burger">
-          <span className="section-header_wrap_burger__icon"></span>
+        <div className="">
+        
+
+          <p className="">Hi, user</p>
+
         </div>
+
         <nav className="section-header_wrap_menu">
           <Link to="/" className="section-header_wrap_menu__link">Home<span></span></Link>
-          <Link to="/registration" className="section-header_wrap_menu__link">Registration<span></span></Link>
           
           <Link to="/contacts" className="section-header_wrap_menu__link">Contact<span></span></Link>
+          <Link to="/logIn" className="section-header_wrap_menu__link border border-primary">Log in / Registration<span></span></Link>
+
         </nav>
+        
       </div>
     </div>
   </header>

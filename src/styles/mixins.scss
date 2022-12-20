@@ -44,3 +44,23 @@
     background-color: $colorDarkBg;
   }
 }
+
+.b-c{
+  border-color: $colorAccent;
+  border: 2px 
+}
+
+.error{
+  background-color: rgb(196, 121, 121);
+  color: rgb(255, 255, 255);
+  margin: 3px;
+  padding-left: 10px;
+}
+
+.success{
+  background-color: rgb(121, 196, 127);
+  color: rgb(39, 39, 39);
+  padding: 3px;
+
+
+}
