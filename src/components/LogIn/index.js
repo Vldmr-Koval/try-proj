@@ -1,60 +1,64 @@
 import {Link} from "react-router-dom"
-import { useForm } from "react-hook-form";
+import {useInput} from '../../hooks/useInput'
 
 
 
 const LogIn = ()=>{
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors }
-  } = useForm();
-
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-  };
-
-  console.log(watch("example")); 
+  const userName = useInput('', {isEmpty: true, minLength: 3, })
+  const userPass = useInput('', {isEmpty: true, minLength: 6, maxLength: 20, isPass: true})
 
 
-    return (
-      <form className="w-25 py-5 mx-auto d-flex row " onSubmit={handleSubmit(onSubmit)}>
-        <label>First Name</label>
-        <input
-          {...register("firstName", {
-            required: true,
-            maxLength: 20,
-            pattern: /^[A-Za-z]+$/i
-          })}
-        />
-        {errors?.firstName?.type === "required" && <p className="success">This field is required</p>}
-        {errors?.firstName?.type === "maxLength" && (
-          <p className="error">First name cannot exceed 20 characters</p>
-        )}
-        {errors?.firstName?.type === "pattern" && (
-          <p className="error" >Alphabetical characters only</p>
-        )}
-        <label>Laste Name</label>
-        <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-        {errors?.lastName?.type === "pattern" && (
-          <p className="error" >Alphabetical characters only</p>
-        )}
-        <label>Age</label>
-        <input {...register("age", { min: 18, max: 99 })} />
-        {errors.age && (
-          <p className="error">You Must be older then 18 and younger then 99 years old</p>
-        )}
-        <input type="submit" />
+  const isReg = (name) => {
+    return name === localStorage.getItem(name)
+  }
 
-        <div className="flex-row d-flex justify-content-between align-items-center">
-          <p className="my-auto">Not a member? </p>
-          <Link to="/registration" className="section-header_wrap_menu__link border border-primary">Register</Link>
+  
+  const handleSubmit= (e) => {
+    e.preventDefault();
+    console.log(userName.value, userPass.value + " === 13str LogIn")
+    isReg(userName.value) ? 
+    alert("Ви успішно залогінились") :
+    alert("Ви успішно залогінились")
+
+
+    // window.localStorage.setItem(userName.value, userPass.value)
+  }
+
+    return <form onSubmit={handleSubmit} className="w-25 py-5 mx-auto">
+  
+  
+    <div className="form-outline mb-4">
+      {(userName.isDirty && userName.isEmpty) && <div className="error">Поле не може бути пустим</div>}
+      {(userName.isDirty && userName.minLengthErr) && <div className="error">Поле має містити мінімум 3 знаки </div>}
+      <input onChange={e => userName.onChange(e)} onBlur={e => userName.onBlur(e)} value={userName.value} name="userName" type="text" className="form-control" />
+      <label className="form-label" htmlFor="form2Example3">User Name</label>
+    </div>
+  
+   
+  
+    <div className="form-outline mb-4">
+       {(userPass.isDirty && userPass.isEmpty) && <div className="error">Поле не може бути пустим</div>}
+       {(userPass.isDirty && userPass.isPass) && <div className="error">Пароль не валідний</div>}
+       {/* // FIXME: поле не відображається при passErr  */}
+       {(userPass.isDirty && userPass.minLengthErr) && <div className="error">Поле має містити мінімум 6 знаків </div>}
+       {(userPass.isDirty && userPass.maxLengthErr) && <div className="error">Пароль перевищує допустиму кількість символів (20)</div>}
+  
+      <input onChange={e => userPass.onChange(e)} onBlur={e => userPass.onBlur(e)} value={userPass.value} name="userPass" type="text" className="form-control" />
+      <label className="form-label" htmlFor="form2Example2">Password</label>
+    </div>
+  
     
-        </div>
-      </form>
-    );
+    <button disabled={!userName.inputValid || !userPass.inputValid} type="submit" className="">Log in</button>
+  
+
+    <div className="flex-row d-flex justify-content-between align-items-center">
+      <p className="my-auto">Not a member? </p>
+      <Link to="/registration" className="section-header_wrap_menu__link border border-primary">Register</Link>
     
+    </div>
+   
+  </form>
+      
 }
 
 export default LogIn
@@ -76,10 +80,10 @@ export default LogIn
 
 //   <button type="button" className="btn btn-primary btn-block mb-4">Log in</button>
 
-//   <div className="flex-row d-flex justify-content-between align-items-center">
-//     <p className="my-auto">Not a member? </p>
-//     <Link to="/registration" className="section-header_wrap_menu__link border border-primary">Register</Link>
+  // <div className="flex-row d-flex justify-content-between align-items-center">
+  //   <p className="my-auto">Not a member? </p>
+  //   <Link to="/registration" className="section-header_wrap_menu__link border border-primary">Register</Link>
     
-//   </div>
+  // </div>
 // </form>
 // )

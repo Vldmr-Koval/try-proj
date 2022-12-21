@@ -1,7 +1,11 @@
+import { useState } from "react"
 import {Link} from "react-router-dom"
 
-
 const Header = () =>{
+
+    const [userName, setUserNameHeader] = useState('duuude')
+    //TODO: прокинути UserName через LS???  виконати setUserNameHeader при успішному Log In / винести логіку в окремий компонент
+
     return <header className="section-header">
     <div className="container">
       <div className="section-header_wrap">
@@ -13,7 +17,7 @@ const Header = () =>{
         <div className="">
         
 
-          <p className="">Hi, user</p>
+          <p className="">Hi, {userName} </p>
 
         </div>
 

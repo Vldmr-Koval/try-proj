@@ -16,7 +16,7 @@ class App extends Component {
     render(){
       return (<>
       <Router>
-        <Header/>         
+        <Header someName="someTest"/>         
         <Routes>
               <Route index path="/" element={<Home />} />
               <Route path="/logIn" element={<LogIn />} />
