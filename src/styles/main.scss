@@ -73,12 +73,10 @@ body {
 .section-banner {
   z-index: 1;
 
-  // max-width: 1366px;
   width: 100%;
   background: #e9e9e9;
   margin: 0 auto;
-  padding-top: 50px; // !!!!!!!!!!!!!!!!вирішення проблеми із перекриттям секцій
-  // position: static;
+  padding-top: 50px; 
   &_offer {
     padding: 225px 10px 200px 0;
     position: relative;
@@ -104,7 +102,6 @@ body {
       max-width: 480px;
     }
     &__active {
-      // font-family: MontserratM;
       background-color: #10c9c3;
       width: 180px;
       height: 54px;

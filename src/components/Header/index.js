@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 const Header = () =>{
 
     const [userName, setUserNameHeader] = useState('duuude')
-    //TODO: прокинути UserName через LS???  виконати setUserNameHeader при успішному Log In / винести логіку в окремий компонент
+    //TODO: прокинути UserName через LS??? або context,  виконати setUserNameHeader при успішному Log In / винести логіку в окремий компонент
 
     return <header className="section-header">
     <div className="container">
